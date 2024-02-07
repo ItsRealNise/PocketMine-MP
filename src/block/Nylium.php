@@ -27,15 +27,14 @@ use pocketmine\block\utils\BlockEventHelper;
 use pocketmine\item\Fertilizer;
 use pocketmine\item\Item;
 use pocketmine\math\Facing;
+use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\utils\Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\Position;
+use function count;
 use function mt_rand;
 
-/**
- * @todo add Crimson Fungus and Warped Fungus
- */
 class Nylium extends Opaque{
 
 	public function getDropsForCompatibleTool(Item $item) : array{
@@ -76,17 +75,16 @@ class Nylium extends Opaque{
 	}
 
 	private function grow(ChunkManager $world, Position $pos, Random $random, int $count, int $radius) : void{
+		/** @var Block[] $arr */
 		$arr = [];
 
 		if($this->getTypeId() === BlockTypeIds::WARPED_NYLIUM){
-			/** @var Block[] $arr */
 			$arr = [
 				VanillaBlocks::WARPED_ROOTS()
 			];
 		}
 
 		if($this->getTypeId() === BlockTypeIds::CRIMSON_NYLIUM){
-			/** @var Block[] $arr */
 			$arr = [
 				VanillaBlocks::CRIMSON_ROOTS()
 			];
@@ -101,4 +99,5 @@ class Nylium extends Opaque{
 			}
 		}
 	}
+
 }
