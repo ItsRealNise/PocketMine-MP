@@ -99,5 +99,4 @@ class Nylium extends Opaque{
 			}
 		}
 	}
-
 }
