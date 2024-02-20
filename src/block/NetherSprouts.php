@@ -38,19 +38,28 @@ use pocketmine\world\Position;
 use function count;
 use function mt_rand;
 
-class Fungus extends NetherSprouts {
+class NetherSprouts extends Opaque{
 
-    public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-        if($this->getSide(Facing::UP)->getTypeId() !== BlockTypeIds::AIR){
+    //This block allows placement of fungus.
+    private const PLACEMENT = [BlockTypeIds::GRASS, BlockTypeIds::DIRT, BlockTypeIds::PODZOL, BlockTypeIds::FARMLAND, BlockTypeIds::CRIMSON_NYLIUM, BlockTypeIds::WARPED_NYLIUM, BlockTypeIds::MYCELIUM, BlockTypeIds::SOUL_SOIL, BlockTypeIds::MUD, BlockTypeIds::MUDDY_MANGROVE_ROOTS, BlockTypeIds::FLOWER_POT];
+
+    public function ticksRandomly() : bool{
+        return true;
+    }
+
+    public function onNearbyBlockChange(): void
+    {
+        if($this->getSide(Facing::DOWN)->isTransparent()){
+            $this->position->getWorld()->useBreakOn($this->position);
+        }
+    }
+
+    public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null): bool
+    {
+        if(in_array($this->getSide(Facing::DOWN)->getTypeId(), self::PLACEMENT)){
             return false;
         }
 
-        if($item instanceof Fertilizer && (new WarpedFungi())?->getBlockTransaction($this->position->world, $this->position->x, $this->position->y, $this->position->z, new Random(mt_rand()))){
-            $item->pop();
-
-            return true;
-        }
-
-        return false;
+        return true;
     }
 }
