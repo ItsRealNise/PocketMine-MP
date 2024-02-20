@@ -852,7 +852,8 @@ final class BlockStateToObjectDeserializer implements BlockStateDeserializer{
 		$this->mapSimple(Ids::NETHER_BRICK, fn() => Blocks::NETHER_BRICKS());
 		$this->mapSimple(Ids::NETHER_BRICK_FENCE, fn() => Blocks::NETHER_BRICK_FENCE());
 		$this->mapSimple(Ids::NETHER_GOLD_ORE, fn() => Blocks::NETHER_GOLD_ORE());
-		$this->mapSimple(Ids::NETHER_WART_BLOCK, fn() => Blocks::NETHER_WART_BLOCK());
+        $this->mapSimple(Ids::NETHER_SPROUTS, fn() => Blocks::NETHER_SPROUTS());
+        $this->mapSimple(Ids::NETHER_WART_BLOCK, fn() => Blocks::NETHER_WART_BLOCK());
 		$this->mapSimple(Ids::NETHERITE_BLOCK, fn() => Blocks::NETHERITE());
 		$this->mapSimple(Ids::NETHERRACK, fn() => Blocks::NETHERRACK());
 		$this->mapSimple(Ids::NETHERREACTOR, fn() => Blocks::NETHER_REACTOR_CORE());
