@@ -31,6 +31,6 @@ use pocketmine\world\ChunkManager;
 class WarpedFungi extends Fungi {
 
     public function __construct(){
-        parent::__construct(VanillaBlocks::CRIMSON_STEM(), VanillaBlocks::NETHER_WART_BLOCK());
+        parent::__construct(VanillaBlocks::WARPED_STEM(), VanillaBlocks::WARPED_WART_BLOCK());
     }
 }

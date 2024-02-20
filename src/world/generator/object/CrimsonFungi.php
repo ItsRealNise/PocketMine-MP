@@ -31,6 +31,6 @@ use pocketmine\world\ChunkManager;
 class CrimsonFungi extends Fungi {
 
     public function __construct(){
-        parent::__construct(VanillaBlocks::CRIMSON_STEM(), VanillaBlocks::NETHER_WART_BLOCK());
+        parent::__construct(VanillaBlocks::CRIMSON_STEM(), VanillaBlocks::NETHER_WART_BLOCK(), VanillaBlocks::WEEPING_VINES());
     }
 }

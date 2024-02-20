@@ -45,7 +45,7 @@ abstract class Fungi{
         protected ?Block $vines = null,
     ){
         $this->shroomlight = VanillaBlocks::SHROOMLIGHT();
-        $this->trunkHeight = mt_rand(4, 13);
+        $this->trunkHeight = mt_rand(1, 10);
     }
 
     public function canPlaceObject(ChunkManager $world, int $x, int $y, int $z, Random $random) : bool{
@@ -87,7 +87,6 @@ abstract class Fungi{
     }
 
     protected function placeTrunk(int $x, int $y, int $z, Random $random, int $trunkHeight, BlockTransaction $transaction) : void{
-        // The base dirt block
         $transaction->addBlockAt($x, $y - 1, $z, VanillaBlocks::NETHERRACK());
 
         for($yy = 0; $yy < $trunkHeight; ++$yy){
@@ -109,7 +108,12 @@ abstract class Fungi{
                         continue;
                     }
                     if(!$transaction->fetchBlockAt($xx, $yy, $zz)->isSolid()){
-                        $transaction->addBlockAt($xx, $yy, $zz, $this->leafBlock);
+                        if (mt_rand(1, 3) === 2){
+                            $transaction->addBlockAt($xx,$yy, $zz, $this->shroomlight);
+                            break;
+                        }else{
+                            $transaction->addBlockAt($xx, $yy, $zz, $this->leafBlock);
+                        }
                     }
                 }
             }
