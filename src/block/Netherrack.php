@@ -46,7 +46,7 @@ class Netherrack extends Opaque{
             return true;
         }
 
-        return false;
+        return true;
     }
 
     private function changeToNextNyliumBlock(): bool
@@ -56,7 +56,7 @@ class Netherrack extends Opaque{
         foreach ($blocksOnSides as $blockOnSide){
             $blockId = $blockOnSide->getTypeId();
             if ($blockId === BlockTypeIds::CRIMSON_NYLIUM || $blockId === BlockTypeIds::WARPED_NYLIUM) {
-                $this->position->getWorld()->setBlock($this->position->asVector3(), $blockOnSide);
+                $this->position->world->setBlock($this->position->asVector3(), $blockOnSide);
                 return true;
             }
         }

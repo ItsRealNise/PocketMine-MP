@@ -29,19 +29,36 @@ use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\utils\Random;
+use pocketmine\world\generator\object\CrimsonFungi;
 use pocketmine\world\generator\object\WarpedFungi;
 use function mt_rand;
 
 class Fungus extends NetherSprouts {
 
     public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-        if($this->getSide(Facing::UP)->getTypeId() !== BlockTypeIds::AIR){
+        if($this->getSide(Facing::UP)->getTypeId() === BlockTypeIds::AIR){
             return false;
         }
 
-        if($item instanceof Fertilizer && (new WarpedFungi())?->getBlockTransaction($this->position->world, $this->position->x, $this->position->y, $this->position->z, new Random(mt_rand()))){
+        if($item instanceof Fertilizer && $this->grow()){
             $item->pop();
 
+            return true;
+        }
+
+        return true;
+    }
+
+    public function grow(): bool
+    {
+        $blockId = $this->getTypeId();
+        if ($blockId === BlockTypeIds::CRIMSON_FUNGUS) {
+            (new CrimsonFungi())->getBlockTransaction($this->position->world, $this->position->x, $this->position->y, $this->position->z, new Random(mt_rand()));
+            return true;
+        }
+
+        if ($blockId === BlockTypeIds::WARPED_FUNGUS){
+            (new WarpedFungi())->getBlockTransaction($this->position->world, $this->position->x, $this->position->y, $this->position->z, new Random(mt_rand()));
             return true;
         }
 
