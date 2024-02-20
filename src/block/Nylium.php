@@ -79,7 +79,7 @@ class Nylium extends Opaque{
 
 		if($this->getTypeId() === BlockTypeIds::WARPED_NYLIUM){
 			$arr = [
-				VanillaBlocks::VINES()
+				VanillaBlocks::SPOR()
 			];
 		}
 

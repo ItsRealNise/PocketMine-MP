@@ -23,19 +23,13 @@ declare(strict_types=1);
 
 namespace pocketmine\block;
 
-use pocketmine\block\utils\BlockEventHelper;
 use pocketmine\item\Fertilizer;
 use pocketmine\item\Item;
-use pocketmine\item\ItemTypeIds;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\utils\Random;
-use pocketmine\world\BlockTransaction;
-use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\object\WarpedFungi;
-use pocketmine\world\Position;
-use function count;
 use function mt_rand;
 
 class Fungus extends NetherSprouts {
