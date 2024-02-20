@@ -837,6 +837,7 @@ final class StringToItemParser extends StringToTParser{
 		$result->registerBlock("nether_wart_block", fn() => Blocks::NETHER_WART_BLOCK());
 		$result->registerBlock("nether_wart_plant", fn() => Blocks::NETHER_WART());
 		$result->registerBlock("netherite_block", fn() => Blocks::NETHERITE());
+        $result->registerBlock("nether_sprouts", fn() => Blocks::NETHER_SPROUTS());
 		$result->registerBlock("netherrack", fn() => Blocks::NETHERRACK());
 		$result->registerBlock("netherreactor", fn() => Blocks::NETHER_REACTOR_CORE());
 		$result->registerBlock("normal_stone_stairs", fn() => Blocks::STONE_STAIRS());
