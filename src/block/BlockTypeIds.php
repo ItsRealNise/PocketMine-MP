@@ -747,8 +747,10 @@ final class BlockTypeIds{
 	public const DOUBLE_PITCHER_CROP = 10717;
 	public const CRIMSON_NYLIUM = 10718;
 	public const WARPED_NYLIUM = 10719;
+    public const CRIMSON_FUNGUS = 10720;
+    public const WARPED_FUNGUS = 10721;
 
-	public const FIRST_UNUSED_BLOCK_ID = 10720;
+	public const FIRST_UNUSED_BLOCK_ID = 10722;
 
 	private static int $nextDynamicId = self::FIRST_UNUSED_BLOCK_ID;
 

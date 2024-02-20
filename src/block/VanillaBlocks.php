@@ -220,6 +220,7 @@ use function strtolower;
  * @method static WoodenDoor CRIMSON_DOOR()
  * @method static WoodenFence CRIMSON_FENCE()
  * @method static FenceGate CRIMSON_FENCE_GATE()
+ * @method static Fungus CRIMSON_FUNGUS()
  * @method static Wood CRIMSON_HYPHAE()
  * @method static Nylium CRIMSON_NYLIUM()
  * @method static Planks CRIMSON_PLANKS()
@@ -745,6 +746,7 @@ use function strtolower;
  * @method static WoodenDoor WARPED_DOOR()
  * @method static WoodenFence WARPED_FENCE()
  * @method static FenceGate WARPED_FENCE_GATE()
+ * @method static Fungus WARPED_FUNGUS()
  * @method static Wood WARPED_HYPHAE()
  * @method static Nylium WARPED_NYLIUM()
  * @method static Planks WARPED_PLANKS()
@@ -965,6 +967,10 @@ final class VanillaBlocks{
 		$nyliumBreakInfo = new Info(BreakInfo::pickaxe(0.4, ToolTier::WOOD, 0.4));
 		self::register("crimson_nylium", new Nylium(new BID(Ids::CRIMSON_NYLIUM), "Crimson Nylium", $nyliumBreakInfo));
 		self::register("warped_nylium", new Nylium(new BID(Ids::WARPED_NYLIUM), "Warped Nylium", $nyliumBreakInfo));
+
+        $fungusBreakInfo = new Info(BreakInfo::instant());
+        self::register("crimson_fungus", new Nylium(new BID(Ids::CRIMSON_FUNGUS), "Crimson Fungus", $fungusBreakInfo));
+        self::register("warped_fungus", new Nylium(new BID(Ids::WARPED_FUNGUS), "Warped Fungus", $fungusBreakInfo));
 
 		self::register("nether_portal", new NetherPortal(new BID(Ids::NETHER_PORTAL), "Nether Portal", new Info(BreakInfo::indestructible(0.0))));
 		self::register("nether_reactor_core", new NetherReactor(new BID(Ids::NETHER_REACTOR_CORE), "Nether Reactor Core", new Info(BreakInfo::pickaxe(3.0, ToolTier::WOOD))));
