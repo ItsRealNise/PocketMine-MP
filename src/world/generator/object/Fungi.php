@@ -110,7 +110,6 @@ abstract class Fungi{
                     if(!$transaction->fetchBlockAt($xx, $yy, $zz)->isSolid()){
                         if (mt_rand(1, 3) === 2){
                             $transaction->addBlockAt($xx,$yy, $zz, $this->shroomlight);
-                            break;
                         }else{
                             $transaction->addBlockAt($xx, $yy, $zz, $this->leafBlock);
                         }
