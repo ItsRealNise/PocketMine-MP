@@ -54,7 +54,6 @@ class Nylium extends Opaque{
 	public function onRandomTick() : void{
 		$blockAbove = $this->getSide(Facing::UP);
 		if(!$blockAbove->isTransparent() || $blockAbove->getTypeId() === BlockTypeIds::SNOW_LAYER){
-			//nylium dies
 			BlockEventHelper::spread($this, VanillaBlocks::NETHERRACK(), $this);
 		}
 	}
@@ -66,7 +65,7 @@ class Nylium extends Opaque{
 
 		if($item instanceof Fertilizer){
 			$item->pop();
-			$this->grow($this->position->getWorld(), $this->position, new Random(mt_rand()), 8, 5);
+			$this->grow($this->position->world, $this->position, new Random(mt_rand()), 8, 5);
 
 			return true;
 		}
@@ -80,7 +79,7 @@ class Nylium extends Opaque{
 
 		if($this->getTypeId() === BlockTypeIds::WARPED_NYLIUM){
 			$arr = [
-				VanillaBlocks::WARPED_ROOTS()
+				VanillaBlocks::VINES()
 			];
 		}
 
