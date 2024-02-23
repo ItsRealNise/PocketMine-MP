@@ -24,13 +24,10 @@ declare(strict_types=1);
 namespace pocketmine\world\generator\object;
 
 use pocketmine\block\VanillaBlocks;
-use pocketmine\utils\Random;
-use pocketmine\world\BlockTransaction;
-use pocketmine\world\ChunkManager;
 
 class CrimsonFungi extends Fungi {
 
-    public function __construct(){
-        parent::__construct(VanillaBlocks::CRIMSON_STEM(), VanillaBlocks::NETHER_WART_BLOCK(), VanillaBlocks::WEEPING_VINES());
-    }
+	public function __construct(){
+		parent::__construct(VanillaBlocks::CRIMSON_STEM(), VanillaBlocks::NETHER_WART_BLOCK(), VanillaBlocks::WEEPING_VINES());
+	}
 }

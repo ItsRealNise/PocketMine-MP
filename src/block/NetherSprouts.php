@@ -28,29 +28,28 @@ use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
+use function in_array;
 
 class NetherSprouts extends Opaque{
 
-    //This block allows placement of fungus.
-    private const PLACEMENT = [BlockTypeIds::GRASS, BlockTypeIds::DIRT, BlockTypeIds::PODZOL, BlockTypeIds::FARMLAND, BlockTypeIds::CRIMSON_NYLIUM, BlockTypeIds::WARPED_NYLIUM, BlockTypeIds::MYCELIUM, BlockTypeIds::SOUL_SOIL, BlockTypeIds::MUD, BlockTypeIds::MUDDY_MANGROVE_ROOTS, BlockTypeIds::FLOWER_POT];
+	//This block allows placement of fungus.
+	private const PLACEMENT = [BlockTypeIds::GRASS, BlockTypeIds::DIRT, BlockTypeIds::PODZOL, BlockTypeIds::FARMLAND, BlockTypeIds::CRIMSON_NYLIUM, BlockTypeIds::WARPED_NYLIUM, BlockTypeIds::MYCELIUM, BlockTypeIds::SOUL_SOIL, BlockTypeIds::MUD, BlockTypeIds::MUDDY_MANGROVE_ROOTS, BlockTypeIds::FLOWER_POT];
 
-    public function ticksRandomly() : bool{
-        return true;
-    }
+	public function ticksRandomly() : bool{
+		return true;
+	}
 
-    public function onNearbyBlockChange(): void
-    {
-        if($this->getSide(Facing::DOWN)->isTransparent()){
-            $this->position->world->useBreakOn($this->position);
-        }
-    }
+	public function onNearbyBlockChange() : void{
+		if($this->getSide(Facing::DOWN)->isTransparent()){
+			$this->position->world->useBreakOn($this->position);
+		}
+	}
 
-    public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null): bool
-    {
-        if(in_array($this->getSide(Facing::DOWN)->getTypeId(), self::PLACEMENT)){
-            return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
-        }
+	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
+		if(in_array($this->getSide(Facing::DOWN)->getTypeId(), self::PLACEMENT, true)){
+			return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
+		}
 
-        return false;
-    }
+		return false;
+	}
 }

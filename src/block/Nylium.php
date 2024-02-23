@@ -74,35 +74,35 @@ class Nylium extends Opaque{
 		/** @var Block[] $arr */
 		$arr = [];
 
-		if($this->getTypeId() === BlockTypeIds::WARPED_NYLIUM and $this->getSide(Facing::DOWN)->getTypeId() === BlockTypeIds::WARPED_NYLIUM){
+		if($this->getTypeId() === BlockTypeIds::WARPED_NYLIUM && $this->getSide(Facing::DOWN)->getTypeId() === BlockTypeIds::WARPED_NYLIUM){
 			$arr = [
 				VanillaBlocks::WARPED_FUNGUS(), VanillaBlocks::WARPED_ROOTS(), VanillaBlocks::WARPED_ROOTS(), VanillaBlocks::WARPED_ROOTS(), VanillaBlocks::WARPED_ROOTS()
 			];
 		}
 
-		if($this->getTypeId() === BlockTypeIds::CRIMSON_NYLIUM and $this->getSide(Facing::DOWN)->getTypeId() === BlockTypeIds::CRIMSON_NYLIUM){
+		if($this->getTypeId() === BlockTypeIds::CRIMSON_NYLIUM && $this->getSide(Facing::DOWN)->getTypeId() === BlockTypeIds::CRIMSON_NYLIUM){
 			$arr = [
 				VanillaBlocks::CRIMSON_FUNGUS(), VanillaBlocks::CRIMSON_ROOTS(), VanillaBlocks::NETHER_SPROUTS(), VanillaBlocks::CRIMSON_ROOTS(), VanillaBlocks::NETHER_SPROUTS()
 			];
 		}
 
-        if (count($arr) < 1){
-            return false;
-        }
+		if (count($arr) < 1){
+			return false;
+		}
 
-        $random = new Random(mt_rand());
+		$random = new Random(mt_rand());
 
-        $count = 8;
-        $radius = 5;
+		$count = 8;
+		$radius = 5;
 
 		$arrC = count($arr) - 1;
 		for($c = 0; $c < $count; ++$c){
 			$x = $random->nextRange($this->position->x - $radius, $this->position->x + $radius);
 			$z = $random->nextRange($this->position->z - $radius, $this->position->z + $radius);
 			if($this->position->world->getBlockAt($x, $this->position->y + 1, $z)->getTypeId() === BlockTypeIds::AIR && $this->position->world->getBlockAt($x, $this->position->y, $z)->getTypeId() === $this->getTypeId()){
-                $this->position->world->setBlockAt($x, $this->position->y + 1, $z, $arr[$random->nextRange(0, $arrC)]);
+				$this->position->world->setBlockAt($x, $this->position->y + 1, $z, $arr[$random->nextRange(0, $arrC)]);
 			}
 		}
-        return true;
+		return true;
 	}
 }
