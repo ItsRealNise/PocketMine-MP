@@ -969,9 +969,9 @@ final class VanillaBlocks{
 		self::register("crimson_nylium", new Nylium(new BID(Ids::CRIMSON_NYLIUM), "Crimson Nylium", $nyliumBreakInfo));
 		self::register("warped_nylium", new Nylium(new BID(Ids::WARPED_NYLIUM), "Warped Nylium", $nyliumBreakInfo));
 
-        $fungusBreakInfo = new Info(BreakInfo::instant());
-        self::register("crimson_fungus", new Fungus(new BID(Ids::CRIMSON_FUNGUS), "Crimson Fungus", $fungusBreakInfo));
-        self::register("warped_fungus", new Fungus(new BID(Ids::WARPED_FUNGUS), "Warped Fungus", $fungusBreakInfo));
+    	$fungusBreakInfo = new Info(BreakInfo::instant());
+    	self::register("crimson_fungus", new Fungus(new BID(Ids::CRIMSON_FUNGUS), "Crimson Fungus", $fungusBreakInfo));
+    	self::register("warped_fungus", new Fungus(new BID(Ids::WARPED_FUNGUS), "Warped Fungus", $fungusBreakInfo));
 
         self::register("nether_sprouts", new NetherSprouts(new BID(Ids::NETHER_SPROUTS), "Nether Sprouts", $fungusBreakInfo));
 
