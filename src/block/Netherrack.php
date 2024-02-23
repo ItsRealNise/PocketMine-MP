@@ -35,32 +35,31 @@ class Netherrack extends Opaque{
 		return true;
 	}
 
-    public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-        if($this->getSide(Facing::UP)->getTypeId() !== BlockTypeIds::AIR){
-            return false;
-        }
+	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
+		if($this->getSide(Facing::UP)->getTypeId() !== BlockTypeIds::AIR){
+			return false;
+		}
 
-        if($item instanceof Fertilizer and $this->changeToNextNyliumBlock()){
-            $item->pop();
+		if($item instanceof Fertilizer && $this->changeToNextNyliumBlock()){
+			$item->pop();
 
-            return true;
-        }
+			return true;
+		}
 
-        return true;
-    }
+		return true;
+	}
 
-    private function changeToNextNyliumBlock(): bool
-    {
-        $blocksOnSides = $this->getHorizontalSides();
+	private function changeToNextNyliumBlock() : bool{
+		$blocksOnSides = $this->getHorizontalSides();
 
-        foreach ($blocksOnSides as $blockOnSide){
-            $blockId = $blockOnSide->getTypeId();
-            if ($blockId === BlockTypeIds::CRIMSON_NYLIUM || $blockId === BlockTypeIds::WARPED_NYLIUM) {
-                $this->position->world->setBlock($this->position->asVector3(), $blockOnSide);
-                return true;
-            }
-        }
+		foreach ($blocksOnSides as $blockOnSide){
+			$blockId = $blockOnSide->getTypeId();
+			if ($blockId === BlockTypeIds::CRIMSON_NYLIUM || $blockId === BlockTypeIds::WARPED_NYLIUM) {
+				$this->position->world->setBlock($this->position->asVector3(), $blockOnSide);
+				return true;
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 }

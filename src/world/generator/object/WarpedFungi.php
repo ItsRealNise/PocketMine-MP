@@ -24,13 +24,10 @@ declare(strict_types=1);
 namespace pocketmine\world\generator\object;
 
 use pocketmine\block\VanillaBlocks;
-use pocketmine\utils\Random;
-use pocketmine\world\BlockTransaction;
-use pocketmine\world\ChunkManager;
 
 class WarpedFungi extends Fungi {
 
-    public function __construct(){
-        parent::__construct(VanillaBlocks::WARPED_STEM(), VanillaBlocks::WARPED_WART_BLOCK());
-    }
+	public function __construct(){
+		parent::__construct(VanillaBlocks::WARPED_STEM(), VanillaBlocks::WARPED_WART_BLOCK());
+	}
 }
