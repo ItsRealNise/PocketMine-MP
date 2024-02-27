@@ -21,21 +21,8 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\item;
 
-use pocketmine\block\inventory\SmithingTableInventory;
-use pocketmine\item\Item;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
+class SmithingTemplate extends Item{
 
-final class SmithingTable extends Opaque{
-
-	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-		$player?->setCurrentWindow(new SmithingTableInventory($this->position));
-		return true;
-	}
-
-	public function getFuelTime() : int{
-		return 300;
-	}
 }

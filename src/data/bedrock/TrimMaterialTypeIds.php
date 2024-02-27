@@ -21,21 +21,18 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\data\bedrock;
 
-use pocketmine\block\inventory\SmithingTableInventory;
-use pocketmine\item\Item;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
+final class TrimMaterialTypeIds{
 
-final class SmithingTable extends Opaque{
-
-	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-		$player?->setCurrentWindow(new SmithingTableInventory($this->position));
-		return true;
-	}
-
-	public function getFuelTime() : int{
-		return 300;
-	}
+	public const AMETHYST = 0;
+	public const COPPER = 1;
+	public const DIAMOND = 2;
+	public const EMERALD = 3;
+	public const GOLD = 4;
+	public const IRON = 5;
+	public const LAPIS = 6;
+	public const NETHERITE = 7;
+	public const QUARTZ = 8;
+	public const REDSTONE = 9;
 }

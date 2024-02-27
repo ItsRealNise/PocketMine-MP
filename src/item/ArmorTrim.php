@@ -21,21 +21,20 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\item;
 
-use pocketmine\block\inventory\SmithingTableInventory;
-use pocketmine\item\Item;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
+class ArmorTrim{
 
-final class SmithingTable extends Opaque{
+	public function __construct(
+		private readonly ArmorTrimMaterial $material,
+		private readonly ArmorTrimPattern $pattern
+	){}
 
-	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-		$player?->setCurrentWindow(new SmithingTableInventory($this->position));
-		return true;
+	public function getMaterial() : ArmorTrimMaterial{
+		return $this->material;
 	}
 
-	public function getFuelTime() : int{
-		return 300;
+	public function getPattern() : ArmorTrimPattern{
+		return $this->pattern;
 	}
 }

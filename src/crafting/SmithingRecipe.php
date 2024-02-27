@@ -21,21 +21,21 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\crafting;
 
-use pocketmine\block\inventory\SmithingTableInventory;
 use pocketmine\item\Item;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
-final class SmithingTable extends Opaque{
+interface SmithingRecipe{
 
-	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null, array &$returnedItems = []) : bool{
-		$player?->setCurrentWindow(new SmithingTableInventory($this->position));
-		return true;
-	}
+	public function getInput() : RecipeIngredient;
 
-	public function getFuelTime() : int{
-		return 300;
-	}
+	public function getAddition() : RecipeIngredient;
+
+	public function getTemplate() : RecipeIngredient;
+
+	/**
+	 * @param Item[] $inputs
+	 * @phpstan-param list<Item> $inputs
+	 */
+	public function getResultFor(array $inputs) : ?Item;
 }
