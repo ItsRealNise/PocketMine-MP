@@ -21,25 +21,13 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\world\generator\object;
 
-use pocketmine\block\utils\LightableTrait;
-use pocketmine\data\runtime\RuntimeDataDescriber;
+use pocketmine\block\VanillaBlocks;
 
-class RedstoneTorch extends Torch{
-	use LightableTrait;
+class WarpedFungi extends Fungi {
 
-	public function __construct(BlockIdentifier $idInfo, string $name, BlockTypeInfo $typeInfo){
-		$this->lit = true;
-		parent::__construct($idInfo, $name, $typeInfo);
-	}
-
-	protected function describeBlockOnlyState(RuntimeDataDescriber $w) : void{
-		parent::describeBlockOnlyState($w);
-		$w->bool($this->lit);
-	}
-
-	public function getLightLevel() : int{
-		return $this->lit ? 7 : 0;
+	public function __construct(){
+		parent::__construct(VanillaBlocks::WARPED_STEM(), VanillaBlocks::WARPED_WART_BLOCK());
 	}
 }
